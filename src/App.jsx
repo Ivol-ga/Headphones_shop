@@ -6,29 +6,31 @@ import { Main } from "./components/layout/Main/Main.jsx";
 import { Cart } from "./components/pages/Cart/Cart.jsx";
 import { NotFound } from "./components/pages/NotFound/NotFound";
 import { Spinner } from "./components/Spinner.jsx";
-import { AppContext } from "./context/app.Context.js";
+import { GoodsCountContext } from "./context/app.Context.js";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [cartCount, setCartCount] = useState([]);
+  // const [allGoods, setAllGoods] = useState([]);
 
-  const addProduct = () => {
-    //   // setProductsSum((productsSum) => productsSum + parseInt(price));
-    setCartCount((countsSum) => countsSum + 1);
+  const addProduct = (id) => {
+    setCartCount([...cartCount, id]);
   };
 
   function handleCountCarts(id) {
-    return console.log(id);
+    setCartCount([...cartCount, id]);
   }
   function handleCartClick(id) {
     return console.log(setCartCount(handleCountCarts(id)));
   }
 
   return (
-    <AppContext.Provider value={{ cartCount, handleCountCarts, isLoading }}>
+    <GoodsCountContext.Provider
+      value={{ cartCount, handleCountCarts, isLoading }}
+    >
       <Header
         cartCount={cartCount}
-        handleClick={() => addProduct()}
+        handleClick={addProduct}
         handleCartClick={handleCartClick}
       />
       {isLoading && <Spinner />}
@@ -39,7 +41,7 @@ function App() {
           element={
             <Cart
               isLoading={isLoading}
-              handleClick={() => addProduct()}
+              handleClick={addProduct}
               handleCartClick={handleCartClick}
             />
           }
@@ -47,7 +49,7 @@ function App() {
         <Route path="*" element={<NotFound isLoading={isLoading} />} />
       </Routes>
       <Footer />
-    </AppContext.Provider>
+    </GoodsCountContext.Provider>
   );
 }
 

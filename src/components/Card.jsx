@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import starpic from "../assets/img/star.png";
-import { AppContext } from "../context/app.Context";
+import { GoodsCountContext } from "../context/app.Context";
 
 function Card({ id, picture, description, price, name, star, discount }) {
-  const { handleCountCarts } = useContext(AppContext);
-  const { cartCount } = useContext(AppContext);
+  const { handleCountCarts } = useContext(GoodsCountContext);
+  const { cartCount } = useContext(GoodsCountContext);
   const count = useContext(cartCount);
 
   function handleCartClick() {
-    return console.log(cartCount.push(handleCountCarts(id)));
+    return cartCount.push(handleCountCarts(id));
   }
 
   return (
@@ -32,13 +32,9 @@ function Card({ id, picture, description, price, name, star, discount }) {
           ) : (
             <span className="card__price">{price} ₽</span>
           )}
-          <a
-            href="#"
-            className="card__cart  btn_type_primary"
-            onClick={handleCartClick}
-          >
+          <button className="card__btn" onClick={handleCartClick}>
             Купить
-          </a>
+          </button>
         </div>
       </div>
     </div>

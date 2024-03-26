@@ -3,16 +3,11 @@ import heart from "../../../assets/icons/Heart.svg";
 import cart from "../../../assets/icons/Cart.svg";
 import { Logo } from "../../Logo";
 import { useContext } from "react";
-import { AppContext } from "../../../context/app.Context";
+import { GoodsCountContext } from "../../../context/app.Context";
 import { Link } from "react-router-dom";
 
 function Header() {
-  const { cartCount } = useContext(AppContext);
-
-  // function handleCountCarts(id) {
-  //   return console.log(id);
-  // }
-  console.log(cartCount);
+  const { cartCount } = useContext(GoodsCountContext);
 
   return (
     <div className={"header header-wrapper"}>
@@ -24,7 +19,7 @@ function Header() {
             <img src={heart} alt="favourite" />
           </a>
           <Link to="cart" className="icon__cart icon">
-            <span className="icon__count">{cartCount}</span>
+            <span className="icon__count">{cartCount.length}</span>
             <img src={cart} alt="cart" />
           </Link>
         </div>
