@@ -10,7 +10,7 @@
     "star": 4.7,
     "isCart": false,
     "available": true,
-    "stock": 10,
+    "count": 1,
     "picture": "https://i.postimg.cc/fT2b8qRN/Image-3.png"
   },
   {
@@ -24,7 +24,7 @@
     "star": 4.7,
     "isCart": false,
     "available": true,
-    "stock": 10,
+    "count": 1,
     "picture": "https://i.postimg.cc/VLrNHBr0/Image-4.png"
   },
   {
@@ -38,7 +38,7 @@
     "star": 4.7,
     "isCart": false,
     "available": true,
-    "stock": 10,
+    "count": 1,
     "picture": "https://i.postimg.cc/7hTf7gSz/Image-5.png"
   }
 ]

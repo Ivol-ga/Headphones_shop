@@ -10,7 +10,7 @@
     "star": 4.7,
     "isCart": false,
     "available": true,
-    "stock": 10,
+    "count": 1,
     "picture": "https://i.postimg.cc/66vHBqP2/Image.png"
   },
   {
@@ -24,7 +24,7 @@
     "star": 4.5,
     "isCart": false,
     "available": true,
-    "stock": 10,
+    "count": 1,
     "picture": "https://i.postimg.cc/SsG6jVTT/Image-1.png",
     "previu": "<a href='https://postimg.cc/2bVbKdfh' target='_blank'><img src='https://i.postimg.cc/2bVbKdfh/Image-1.png' border='0' alt='Image-1'/></a>",
     "tags": ["new", "sale"]
@@ -40,7 +40,7 @@
     "star": 4.5,
     "isCart": false,
     "available": true,
-    "stock": 10,
+    "count": 1,
     "picture": "https://i.postimg.cc/HsWmhtqp/Image-2.png"
   },
   {
@@ -54,7 +54,7 @@
     "star": 4.7,
     "isCart": false,
     "available": true,
-    "stock": 10,
+    "count": 1,
     "picture": "https://i.postimg.cc/66vHBqP2/Image.png"
   },
   {
@@ -68,7 +68,7 @@
     "star": 4.5,
     "isCart": false,
     "available": true,
-    "stock": 10,
+    "count": 1,
     "picture": "https://i.postimg.cc/SsG6jVTT/Image-1.png",
     "previu": "<a href='https://postimg.cc/2bVbKdfh' target='_blank'><img src='https://i.postimg.cc/2bVbKdfh/Image-1.png' border='0' alt='Image-1'/></a>",
     "tags": ["new", "sale"]
@@ -84,7 +84,7 @@
     "star": 4.5,
     "isCart": false,
     "available": true,
-    "stock": 10,
+    "count": 1,
     "picture": "https://i.postimg.cc/HsWmhtqp/Image-2.png"
   }
 ]

@@ -4,25 +4,59 @@ import { Link, useNavigate } from "react-router-dom";
 import { GoodsCountContext } from "../../../context/app.Context";
 import { GoodsProvider } from "../../../context/Goods";
 import { CartGoods } from "../../CartGoods";
+import dataHeadphones from "../../../data.json";
+import dataWireless from "../../../data__wireless.json";
 
 function Cart() {
   const { cartCount } = useContext(GoodsCountContext);
-  const allGoods = useContext(GoodsProvider);
-
-  // function useGoodsContext() {
-  //   const allGoods = useContext(GoodsProvider);
-  //   if (allGoods === undefined) {
-  //     throw new Error("useCount must be used within a CountProvider");
-  //   }
-  //   return allGoods;
-  // }
-  // useGoodsContext();
+  // const getItemsByIds = useContext(GoodsProvider);
 
   // const cartGoods = allGoods.filter((good) => cartCount.includes(good.id));
   // const cardsGoods = getItemsByIds(cartCount);
 
-  const [counter, setCounter] = useState(1);
+  const allGoods = [...dataWireless, ...dataHeadphones];
+  const cartGoodsIds = allGoods.filter((good) =>
+    cartCount.includes(good.id)
+  ); /*массив товаров в корзине по айди*/
+  const [cart, setCart] = useState(cartGoodsIds);
+  console.log(cart);
+
+  // const cardsGoods = getItemsByIds(cartCount);
+
+  const [totalSum, SetTotalSum] = useState({
+    price: 500,
+    count: 5,
+  });
+
   const navigate = useNavigate();
+
+  function handleIncrement(id) {
+    setCart(
+      cartGoodsIds.map((product) => {
+        if (product.id === id) {
+          return {
+            ...product,
+            count: ++product.count,
+          };
+        }
+        return product;
+      })
+    );
+  }
+
+  function handleDecrement(id) {
+    setCart(
+      cartGoodsIds.map((product) => {
+        if (product.id === id) {
+          return {
+            ...product,
+            count: --product.count,
+          };
+        }
+        return product;
+      })
+    );
+  }
   function handleClickBack() {
     navigate(-1);
   }
@@ -36,18 +70,25 @@ function Cart() {
           </a>
           <h2 className={"cart__title title"}>Корзина</h2>
           <div className="cart__wrapper">
-            <CartGoods
-            //  {allGoods.map((goodItem) => {
-            //   return <CartGoods key={goodItem.id} {...goodItem} />;
-            // })}
-            />
+            <div className="cart__goods">
+              {cartGoodsIds.map((dataItem) => {
+                return (
+                  <CartGoods
+                    key={dataItem.id}
+                    {...dataItem}
+                    handleIncrement={handleIncrement}
+                    handleDecrement={handleDecrement}
+                  />
+                );
+              })}
+            </div>
             <div className="cart__summary">
               <div className="cart__summary-wrapper">
                 <div className="cart__summary_text cart__price cart__price-black">
-                  ИТОГО
+                  ИТОГО:
                 </div>
                 <div className="cart__summary_price cart__price cart__price-black">
-                  ₽ 2927
+                  {totalSum.price}
                 </div>
               </div>
               <Link to={"/"} className="btn">

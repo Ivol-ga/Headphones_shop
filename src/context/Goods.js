@@ -7,20 +7,14 @@ const GoodsContext = createContext();
 
 export const GoodsProvider = ({ children }) => {
   const allItems = [...dataWireless, ...dataHeadphones];
-  const [allGoods, setAllGoods] = useState([]);
+  // const [allGoods, setAllGoods] = useState([]);
 
   const getItemsByIds = (ids) => {
-    return setAllGoods(allItems.filter((item) => ids.includes(item.id)));
+    return allItems.filter((item) => ids.includes(item.id));
   };
-
   return (
     <GoodsContext.Provider
       value={{
-        dataWireless,
-        dataHeadphones,
-        allItems,
-        setAllGoods,
-        allGoods,
         getItemsByIds,
       }}
     >

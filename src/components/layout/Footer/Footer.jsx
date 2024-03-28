@@ -53,22 +53,29 @@ function Footer() {
                 <ul className="socials contacts__socials">
                   <li className="socials__item">
                     <a className="socials__link" href="https://vk.com/">
-                      <img src={vk} alt="vk" className="socials__icon" />
+                      <img
+                        src={vk}
+                        alt="vk"
+                        target="_blank"
+                        className="socials__icon"
+                      />
                     </a>
                   </li>
                   <li className="socials__item">
-                    <a className="socials__link" href="https://telegram.org/">
+                    <a className="socials__link" href="https://t.me/Steel_al">
                       <img
                         src={telegram}
                         alt="telegram"
                         className="socials__icon"
+                        target="_blank"
                       />
                     </a>
                   </li>
                   <li className="socials__item">
                     <a
                       className="socials__link"
-                      href="https://www.whatsapp.com/?lang=ru_RU"
+                      href="https://wa.me/12345678"
+                      target="_blank"
                     >
                       <img
                         src={whatsapp}
