@@ -1,8 +1,6 @@
 import React from "react";
-// import style from "../../../SASS/style.sass";
 import { CardsHeadphones } from "../../CardsHeadphones";
 import { CardsWireles } from "../../CardsWireless";
-import { Cart } from "../../pages/Cart/Cart";
 
 function Main() {
   return (

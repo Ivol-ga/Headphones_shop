@@ -9,9 +9,8 @@ import { Spinner } from "./components/Spinner.jsx";
 import { GoodsCountContext } from "./context/app.Context.js";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading] = useState(false);
   const [cartCount, setCartCount] = useState([]);
-  // const [allGoods, setAllGoods] = useState([]);
 
   const addProduct = (id) => {
     setCartCount([...cartCount, id]);

@@ -9,18 +9,23 @@
     gap: 10px
     border-radius: 30px 30px 0 0
     border-top-left-radius: 30px
+    @include respond(phone)
+        display: grid
+        grid-template-columns: repeat(2, 1fr)
+        justify-items: center
 .footer__border-top
     max-width: 1110px
     border-top-left-radius:30px
     border-top-right-radius:30px
     background-color: $color-white
-
 .footer__col
     display: flex
     border-top-left-radius:30px
     flex-direction: column
     align-items: flex-start
     padding: 30px 10px
+    @include respond(phone)
+        padding: 10px
 .menu-bottom
     display: flex
     flex-direction: column
@@ -32,9 +37,10 @@
         line-height: 14px
         color: #1A1A1A
         transition: 0.2s ease-in-out
+        @include respond(phone)
+            font-size: 14px
     &__item:hover
         color: $color-orange
-
 .menu__language
     display: flex
     align-items: end
@@ -54,8 +60,7 @@
     &__link
         text-decoration: none
         color: currentColor
-        transition: 0.2s ease-in-out
-       
+        transition: 0.2s ease-in-out      
 .socials
     display: flex
     align-items: center
@@ -66,6 +71,8 @@
     margin: 0
     &__icon
         width: 30px
+        @include respond(phone)
+            width: 20px
 .lang, .earth
     margin-right: 17px
     font-size: 15px
@@ -77,43 +84,5 @@
 .earth
     width: 20px
     margin-top: 25px
-    
-// @media (max-width: 880px) {
-// 	.wrapper {
-// 		display: grid;
-// 		grid-template-columns: repeat(2, 1fr);
-// 		row-gap: 40px;
-// 	}
-
-// 	.col:last-child {
-// 		grid-column-start: 2;
-// 		grid-row-start: 1;
-// 	}
-// }
-
-// @media (max-width: 450px) {
-// 	.wrapper {
-// 		grid-template-columns: repeat(1, 1fr);
-// 	}
-
-// 	.col:last-child {
-// 		grid-column-start: 1;
-// 		grid-row-start: 1;
-// 	}
-// }
-
-// @media (max-width: 768px) {
-// 	.footer__logo {
-// 		display: none;
-// 	}
-// 	.footer__copyright {
-// 		display: none;
-// 	}
-// 	.menu-bottom {
-// 		display: none;
-// 	}
-// 	.footer__wrapper {
-// 		text-align: center;
-// 		justify-content: center;
-// 	}
-// }
+    @include respond(phone)
+        margin-top: 0

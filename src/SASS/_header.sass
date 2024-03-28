@@ -6,6 +6,8 @@
         display: flex
         align-items: center
         justify-content: space-between
+        @include respond(phone)
+            justify-content: space-around
     &__icons
         display: flex
 .header-wrapper
@@ -22,8 +24,7 @@
     font-weight: bold
     font-size: 25px
 .iconsMenu
-    display: flex
-    
+    display: flex  
 .icon
     width: 20px
     height: 20px

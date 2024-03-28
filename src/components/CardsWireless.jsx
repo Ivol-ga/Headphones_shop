@@ -1,5 +1,4 @@
 import React from "react";
-// import style from "../../../SASS/style.sass";
 import { Card } from "./Card";
 import dataWireless from "../data__wireless.json";
 

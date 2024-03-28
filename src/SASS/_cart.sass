@@ -7,12 +7,15 @@
         grid-template-columns: 1fr 350px
         gap: 125px
         align-items: start
+        @include respond(tab-port)
+            grid-template-columns: 1fr 215px
+            gap: 10px
+        @include respond(phone)
+            grid-template-columns: 1fr
     &__goods
         display: flex
         flex-direction: column
-        gap: 10px
-
-    
+        gap: 10px  
     &__card
         position: relative
         background-color: $color-white
@@ -32,21 +35,24 @@
         min-width: 147px
         min-height: 18px
         width: 70%
-        padding: 18px
-    
+        padding: 18px    
     &__btns
         margin-bottom: 15px
     &__text-wrapper
         display: flex
         justify-content: space-between
-        width: 100%
+        width: 100%     
     &__name
         font-size: 17px
         font-weight: 600
+        @include respond(tab-port)
+            font-size: 14px
     &__price
         @include text-gray
         font-size: 15px
         font-weight: 600
+        @include respond(tab-port)
+            font-size: 14px
     &__price-black
         color: $color-second-black
     &__total
@@ -69,6 +75,16 @@
     &__summary
         background-color: $color-white
         border-radius: 30px
+        @include respond(phone)
+            display: flex
+            flex-direction: column
+            justify-content: center
+    &__summary_text
+        @include respond(tab-port)
+            font-size: 14px
+    &__summary_price
+        @include respond(tab-port)
+            font-size: 14px
     &__summary-wrapper
         display: flex
         align-items: center
