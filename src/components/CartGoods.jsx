@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import deleteIcon from "../assets/icons/delete.svg";
-import { GoodsCountContext } from "../context/app.Context";
+// import { GoodsCountContext } from "../context/app.Context";
 
 function CartGoods({
   picture,
@@ -12,9 +12,10 @@ function CartGoods({
   count,
   handleDecrement,
   handleIncrement,
+  handleDeleteProduct,
 }) {
   // const [counter, setCounter] = useState(1);
-  const { cartCount } = useContext(GoodsCountContext);
+  // const { cartCount } = useContext(GoodsCountContext);
 
   return (
     <div className="cart__card">
@@ -23,7 +24,7 @@ function CartGoods({
         <div className="cart__btns">
           <button
             className="button__decrement"
-            // disabled={count === 1}
+            disabled={count === 1}
             onClick={() => handleDecrement(id)}
           >
             -
@@ -48,9 +49,12 @@ function CartGoods({
         </div>
       </div>
       <div className="cart__total">
-        <a href="#" className="cart__delete-sticky">
+        <button
+          className="cart__delete-sticky"
+          onClick={() => handleDeleteProduct(id)}
+        >
           <img src={deleteIcon} alt="delete" />
-        </a>
+        </button>
         {discount !== 0 ? (
           <span className="cart__price cart__price-black cart__price-sticky">
             {discount * count} ₽

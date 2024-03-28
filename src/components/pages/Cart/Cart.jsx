@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
-import { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { GoodsCountContext } from "../../../context/app.Context";
-import { GoodsProvider } from "../../../context/Goods";
+// import { GoodsProvider } from "../../../context/Goods";
 import { CartGoods } from "../../CartGoods";
 import dataHeadphones from "../../../data.json";
 import dataWireless from "../../../data__wireless.json";
@@ -18,17 +17,23 @@ function Cart() {
   const cartGoodsIds = allGoods.filter((good) =>
     cartCount.includes(good.id)
   ); /*массив товаров в корзине по айди*/
+
+  const navigate = useNavigate();
+
   const [cart, setCart] = useState(cartGoodsIds);
   console.log(cart);
 
   // const cardsGoods = getItemsByIds(cartCount);
 
-  const [totalSum, SetTotalSum] = useState({
-    price: 500,
-    count: 5,
+  const [totalSum, setTotalSum] = useState({
+    price: cart.reduce((prev, curr) => prev + curr.price, 0),
   });
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    setTotalSum({
+      price: cart.reduce((prev, curr) => prev + curr.price, 0),
+    });
+  }, [cart]);
 
   function handleIncrement(id) {
     setCart(
@@ -57,6 +62,10 @@ function Cart() {
       })
     );
   }
+  function handleDeleteProduct(id) {
+    setCart(cart.filter((item) => item.id !== id));
+  }
+
   function handleClickBack() {
     navigate(-1);
   }
@@ -78,6 +87,7 @@ function Cart() {
                     {...dataItem}
                     handleIncrement={handleIncrement}
                     handleDecrement={handleDecrement}
+                    handleDeleteProduct={handleDeleteProduct}
                   />
                 );
               })}
