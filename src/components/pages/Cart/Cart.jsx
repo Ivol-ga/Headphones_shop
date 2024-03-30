@@ -1,75 +1,65 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { GoodsCountContext } from "../../../context/app.Context";
-// import { GoodsProvider } from "../../../context/Goods";
+import { CartContext } from "../../../context/CartContext";
 import { CartGoods } from "../../CartGoods";
-import dataHeadphones from "../../../data.json";
-import dataWireless from "../../../data__wireless.json";
+// import { GoodsContext } from "../../../context/Goods";
 
 function Cart() {
-  const { cartCount } = useContext(GoodsCountContext);
-  // const getItemsByIds = useContext(GoodsProvider);
-
-  // const cartGoods = allGoods.filter((good) => cartCount.includes(good.id));
-  // const cardsGoods = getItemsByIds(cartCount);
-
-  const allGoods = [...dataWireless, ...dataHeadphones];
-  const cartGoodsIds = allGoods.filter((good) =>
-    cartCount.includes(good.id)
-  ); /*массив товаров в корзине по айди*/
+  const { cartGoods, setCartCount, setCartGoods } = useContext(CartContext);
+  // const { allItems } = useContext(GoodsContext);
 
   const navigate = useNavigate();
 
-  const [cart, setCart] = useState(cartGoodsIds);
-  console.log(cart);
-
-  // const cardsGoods = getItemsByIds(cartCount);
-
-  const [totalSum, setTotalSum] = useState({
-    price: cart.reduce((prev, curr) => prev + curr.price, 0),
-  });
-
-  useEffect(() => {
-    setTotalSum({
-      price: cart.reduce((prev, curr) => prev + curr.price, 0),
-    });
-  }, [cart]);
+  const [totalSum, setTotalSum] = useState(
+    cartGoods.reduce((prev, curr) => prev + curr.price, 0)
+  );
 
   function handleIncrement(id) {
-    setCart(
-      cartGoodsIds.map((product) => {
-        if (product.id === id) {
-          return {
-            ...product,
-            count: ++product.count,
-          };
-        }
-        return product;
-      })
+    const newCartGoods = cartGoods.map((product) => {
+      if (product.id === id) {
+        return {
+          ...product,
+          count: ++product.count,
+        };
+      }
+      return product;
+    });
+    setCartGoods(newCartGoods);
+    setTotalSum(
+      newCartGoods.reduce((prev, curr) => prev + curr.price * curr.count, 0)
     );
   }
 
   function handleDecrement(id) {
-    setCart(
-      cartGoodsIds.map((product) => {
-        if (product.id === id) {
-          return {
-            ...product,
-            count: --product.count,
-          };
-        }
-        return product;
-      })
+    const newCartGoods = cartGoods.map((product) => {
+      if (product.id === id) {
+        return {
+          ...product,
+          count: --product.count,
+        };
+      }
+      return product;
+    });
+    setCartGoods(newCartGoods);
+    setTotalSum(
+      newCartGoods.reduce((prev, curr) => prev + curr.price * curr.count, 0)
     );
   }
   function handleDeleteProduct(id) {
-    setCart(cart.filter((item) => item.id !== id));
+    const newValueCatrGoods = cartGoods.filter((item) => item.id !== id);
+    setCartGoods(newValueCatrGoods);
+    setCartCount((prev) => prev - 1);
+    setTotalSum(
+      newValueCatrGoods.reduce(
+        (prev, curr) => prev + curr.price * curr.count,
+        0
+      )
+    );
   }
 
   function handleClickBack() {
     navigate(-1);
   }
-
   return (
     <>
       <div className="cart wrapper">
@@ -80,7 +70,7 @@ function Cart() {
           <h2 className={"cart__title title"}>Корзина</h2>
           <div className="cart__wrapper">
             <div className="cart__goods">
-              {cartGoodsIds.map((dataItem) => {
+              {cartGoods.map((dataItem) => {
                 return (
                   <CartGoods
                     key={dataItem.id}
@@ -98,7 +88,7 @@ function Cart() {
                   ИТОГО:
                 </div>
                 <div className="cart__summary_price cart__price cart__price-black">
-                  {totalSum.price}
+                  {totalSum}
                 </div>
               </div>
               <Link to={"/"} className="btn">

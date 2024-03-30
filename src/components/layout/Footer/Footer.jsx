@@ -5,6 +5,7 @@ import vk from "./img/vk.svg";
 import lang from "./img/lang.png";
 
 import { Logo } from "../../Logo";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -17,34 +18,34 @@ function Footer() {
             </div>
             <div className="footer__col">
               <nav className="menu-bottom">
-                <a href="/catalogue" className="menu-bottom__item">
+                <Link to="/" className="menu-bottom__item">
                   Избранное
-                </a>
-                <a href="/catalogue" className="menu-bottom__item">
+                </Link>
+                <Link to="/" className="menu-bottom__item">
                   Корзина
-                </a>
-                <a href="/catalogue" className="menu-bottom__item">
+                </Link>
+                <Link to="/" className="menu-bottom__item">
                   Контакты
-                </a>
+                </Link>
               </nav>
             </div>
             <div className="footer__col">
               <nav className="menu-bottom">
-                <a href="/catalogue" className="menu-bottom__item">
+                <Link to="/" className="menu-bottom__item">
                   Условия сервиса
-                </a>
+                </Link>
                 <div className="menu__language">
                   <img
                     src={lang}
                     alt="language"
                     className="socials__icon earth"
                   />
-                  <a href="/catalogue" className="menu-bottom__item lang">
+                  <Link to="/" className="menu-bottom__item lang">
                     Рус
-                  </a>
-                  <a href="/catalogue" className="menu-bottom__item lang">
+                  </Link>
+                  <Link to="/" className="menu-bottom__item lang">
                     Eng
-                  </a>
+                  </Link>
                 </div>
               </nav>
             </div>
@@ -52,29 +53,29 @@ function Footer() {
               <div className="contacts">
                 <ul className="socials contacts__socials">
                   <li className="socials__item">
-                    <a className="socials__link" href="https://vk.com/">
+                    <Link to="https://vk.com/" className="socials__link">
                       <img
                         src={vk}
                         alt="vk"
                         target="_blank"
                         className="socials__icon"
                       />
-                    </a>
+                    </Link>
                   </li>
                   <li className="socials__item">
-                    <a className="socials__link" href="https://t.me/Steel_al">
+                    <Link to="https://t.me/Steel_al" className="socials__link">
                       <img
                         src={telegram}
                         alt="telegram"
                         className="socials__icon"
                         target="_blank"
                       />
-                    </a>
+                    </Link>
                   </li>
                   <li className="socials__item">
-                    <a
+                    <Link
+                      to="https://wa.me/12345678"
                       className="socials__link"
-                      href="https://wa.me/12345678"
                       target="_blank"
                     >
                       <img
@@ -82,7 +83,7 @@ function Footer() {
                         alt="whatsapp"
                         className="socials__icon"
                       />
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

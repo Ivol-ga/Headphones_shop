@@ -1,6 +1,5 @@
 import React from "react";
 import deleteIcon from "../assets/icons/delete.svg";
-// import { GoodsCountContext } from "../context/app.Context";
 
 function CartGoods({
   picture,
@@ -14,9 +13,6 @@ function CartGoods({
   handleIncrement,
   handleDeleteProduct,
 }) {
-  // const [counter, setCounter] = useState(1);
-  // const { cartCount } = useContext(GoodsCountContext);
-
   return (
     <div className="cart__card">
       <div className="cart__image">

@@ -6,49 +6,25 @@ import { Main } from "./components/layout/Main/Main.jsx";
 import { Cart } from "./components/pages/Cart/Cart.jsx";
 import { NotFound } from "./components/pages/NotFound/NotFound";
 import { Spinner } from "./components/Spinner.jsx";
-import { GoodsCountContext } from "./context/app.Context.js";
+import { CartContextProvider } from "./context/CartContext.js";
+import { GoodsProvider } from "./context/Goods.js";
 
 function App() {
   const [isLoading] = useState(false);
-  const [cartCount, setCartCount] = useState([]);
-
-  const addProduct = (id) => {
-    setCartCount([...cartCount, id]);
-  };
-
-  function handleCountCarts(id) {
-    setCartCount([...cartCount, id]);
-  }
-  function handleCartClick(id) {
-    return console.log(setCartCount(handleCountCarts(id)));
-  }
 
   return (
-    <GoodsCountContext.Provider
-      value={{ cartCount, handleCountCarts, isLoading }}
-    >
-      <Header
-        cartCount={cartCount}
-        handleClick={addProduct}
-        handleCartClick={handleCartClick}
-      />
-      {isLoading && <Spinner />}
-      <Routes>
-        <Route path="/" element={<Main isLoading={isLoading} />} />
-        <Route
-          path="/cart"
-          element={
-            <Cart
-              isLoading={isLoading}
-              handleClick={addProduct}
-              handleCartClick={handleCartClick}
-            />
-          }
-        />
-        <Route path="*" element={<NotFound isLoading={isLoading} />} />
-      </Routes>
-      <Footer />
-    </GoodsCountContext.Provider>
+    <GoodsProvider>
+      <CartContextProvider>
+        <Header />
+        {isLoading && <Spinner />}
+        <Routes>
+          <Route path="/" element={<Main isLoading={isLoading} />} />
+          <Route path="/cart" element={<Cart isLoading={isLoading} />} />
+          <Route path="*" element={<NotFound isLoading={isLoading} />} />
+        </Routes>
+        <Footer />
+      </CartContextProvider>
+    </GoodsProvider>
   );
 }
 

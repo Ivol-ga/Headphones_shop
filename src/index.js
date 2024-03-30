@@ -3,15 +3,12 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import { GoodsProvider } from "./context/Goods";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <GoodsProvider>
-        <App />
-      </GoodsProvider>
+      <App />
     </BrowserRouter>
   </React.StrictMode>
 );

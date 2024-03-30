@@ -1,14 +1,32 @@
 import React, { useContext } from "react";
 import starpic from "../assets/img/star.png";
-import { GoodsCountContext } from "../context/app.Context";
+import { CartContext } from "../context/CartContext";
 
 function Card({ id, picture, description, price, name, star, discount }) {
-  const { handleCountCarts } = useContext(GoodsCountContext);
-  const { cartCount } = useContext(GoodsCountContext);
-  const count = useContext(cartCount);
+  const { setCartCount, setCartGoods, cartGoods } = useContext(CartContext);
 
   function handleCartClick() {
-    return cartCount.push(handleCountCarts(id));
+    if (cartGoods.filter((item) => item.id === id).length === 0) {
+      const newCardGoods = [
+        ...cartGoods,
+        { id, picture, description, price, name, star, discount, count: 1 },
+      ];
+      setCartGoods(newCardGoods);
+    } else {
+      setCartGoods(
+        cartGoods.map((product) => {
+          if (product.id === id) {
+            return {
+              ...product,
+              count: ++product.count,
+            };
+          }
+          return product;
+        })
+      );
+    }
+
+    setCartCount((prev) => prev + 1);
   }
 
   return (
